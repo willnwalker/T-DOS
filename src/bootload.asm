@@ -34,13 +34,13 @@ start:
 	jmp cli
 
 	text_string db 'T-DOS 0.3', 10, 13, 0
-	text_border_horizontal db 205, 0
-	text_border_vertical db 186, 0 			; Vertical border
-	text_border1 db 201, 0					; Top left border corner
-	text_border2 db 187, 0					; Top right border corner
-	text_border3 db	200, 0					; Bottom left border corner
-	text_border4 db 188, 0					; Bottom right border corner
-	prompt db '>', 0
+	;text_border_horizontal db 205, 0
+	;text_border_vertical db 186, 0 			; Vertical border
+	;text_border1 db 201, 0					; Top left border corner
+	;text_border2 db 187, 0					; Top right border corner
+	;text_border3 db	200, 0					; Bottom left border corner
+	;text_border4 db 188, 0					; Bottom right border corner
+	prompt db 'WILL>', 0
 	;DH-ROW 0-24
 	;DL-COLUMN 0-79
 
@@ -250,79 +250,79 @@ move_cursor:
 	ret
 ;====================================================================================================
 
-draw_box:
-	pusha
+;draw_box:
+;	pusha
 
-	mov dx, 0	; Print top left corner
-	call move_cursor
-	mov si, text_border1
-	call print_string
+;	mov dx, 0	; Print top left corner
+;	call move_cursor
+;	mov si, text_border1
+;	call print_string
 	
-	mov dh, 0	; Print top right corner 
-	mov dl, 79
-	call move_cursor
-	mov si, text_border2
-	call print_string
+;	mov dh, 0	; Print top right corner 
+;	mov dl, 79
+;	call move_cursor
+;	mov si, text_border2
+;	call print_string
 	
-	mov dh, 2	; Print bottom left corner
-	mov dl, 0
-	call move_cursor
-	mov si, text_border3
-	call print_string
+;	mov dh, 2	; Print bottom left corner
+;	mov dl, 0
+;	call move_cursor
+;	mov si, text_border3
+;	call print_string
 	
-	mov dh, 2	; Print bottom right corner
-	mov dl, 79
-	call move_cursor
-	mov si, text_border4
-	call print_string
+;	mov dh, 2	; Print bottom right corner
+;	mov dl, 79
+;	call move_cursor
+;	mov si, text_border4
+;	call print_string
 	
-	mov dh, 1	; Print left border
-	mov dl, 0
-	call move_cursor
-	mov si, text_border_vertical
-	call print_string
+;	mov dh, 1	; Print left border
+;	mov dl, 0
+;	call move_cursor
+;	mov si, text_border_vertical
+;	call print_string
 	
-	mov dh, 1	; Print right border
-	mov dl, 79
-	call move_cursor
-	mov si, text_border_vertical
-	call print_string
+;	mov dh, 1	; Print right border
+;	mov dl, 79
+;	call move_cursor
+;	mov si, text_border_vertical
+;	call print_string
 
-.jumpup:
-	xor cx, cx
-	mov dh, 0
-	mov dl, 1
-	call move_cursor
-	jmp .loop
+;.jumpup:
+;	xor cx, cx
+;	mov dh, 0
+;	mov dl, 1
+;	call move_cursor
+;	jmp .loop
 
-.loop:
-	cmp cx, 78
-	je .jumpdown
-	inc dl
-	mov si, text_border_horizontal
-	call print_string
-	inc cx
-	jmp .loop
+;.loop:
+;	cmp cx, 78
+;	je .jumpdown
+;	inc dl
+;	mov si, text_border_horizontal
+;	call print_string
+;	inc cx
+;	jmp .loop
 	
-.jumpdown:
-	xor cx, cx
-	mov dh, 2
-	mov dl, 1
-	call move_cursor
-	jmp .loop2
+;.jumpdown:
+;	xor cx, cx
+;	mov dh, 2
+;	mov dl, 1
+;	call move_cursor
+;	jmp .loop2
 	
-.loop2:
-	cmp cx, 78
-	je .end
-	inc dl
-	mov si, text_border_horizontal
-	call print_string
-	inc cx
-	jmp .loop2
+;.loop2:
+;	cmp cx, 78
+;	je .end
+;	inc dl
+;	mov si, text_border_horizontal
+;	call print_string
+;	inc cx
+;	jmp .loop2
 
-.end:
-	popa
-	ret
+;.end:
+;	popa
+;	ret
 
 ;====================================================================================================
 	
