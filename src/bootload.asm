@@ -31,9 +31,6 @@ start:
 	mov si, text_string	; Put string position into SI
 	call print_string	; Call our string-printing routine
 	
-	mov dh, 3
-	mov dl, 0
-	
 	jmp $				; Jump here - infinite loop!
 
 
