@@ -22,17 +22,16 @@ start:
 
 	call clear_screen	; Giving us a blank canvas!
 	
-	call draw_box		; Draw box at top of screen
+	;call draw_box		; Draw box at top of screen
 	
-	mov dh, 1
-	mov dl, 1
-	call move_cursor
+	;mov dh, 1
+	;mov dl, 1
+	;call move_cursor
 	
+	mov dx, 0
 	mov si, text_string	; Put string position into SI
 	call print_string	; Call our string-printing routine
-	
-	jmp $				; Jump here - infinite loop!
-
+	jmp cli
 
 	text_string db 'T-DOS 0.3', 10, 13, 0
 	text_border_horizontal db 205, 0
@@ -56,14 +55,10 @@ start:
 cli:
 	mov si, prompt
 	call print_string
-	inc dl
-	inc dl
 	call input_string
-	mov si, ax
-	call print_string
-	ret
+	call print_line
+	jmp cli
 	
-
 ;====================================================================================================
 
 clear_screen:
@@ -99,6 +94,22 @@ print_string:		; Routine: output string in SI to screen
 .done:
 	popa
 	ret
+	
+;====================================================================================================
+	
+print_line:
+	pusha
+
+	mov ah, 0Eh			; BIOS output char code
+
+	mov al, 13			; Carriage return codes
+	int 10h
+	mov al, 10
+	int 10h
+
+	popa
+	ret
+
 ;====================================================================================================
 
 wait_key:
