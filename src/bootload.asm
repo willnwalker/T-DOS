@@ -40,7 +40,7 @@ start:
 	;text_border2 db 187, 0					; Top right border corner
 	;text_border3 db	200, 0					; Bottom left border corner
 	;text_border4 db 188, 0					; Bottom right border corner
-	prompt db 'WILL>', 0
+	prompt db 'DOS>', 0
 	;DH-ROW 0-24
 	;DL-COLUMN 0-79
 
