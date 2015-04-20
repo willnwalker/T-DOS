@@ -1,2 +1,2 @@
 cd tools\qemu\
-start qemu.exe %~d0\img\tdos.flp
+start qemu.exe %~d0\T-DOS\img\tdos.flp
